@@ -16,7 +16,6 @@ import { useSearchParams } from 'next/navigation';
 export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
   const params = useSearchParams();
-  const hasAlert = params.get('alert') === 'true';
 
   return (
     <form action={dispatch} className="space-y-3">
@@ -87,7 +86,10 @@ function LoginButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="mt-4 w-full" aria-disabled={pending}>
+    <Button
+      className="mt-4 w-full bg-orange-400 hover:bg-orange-500"
+      aria-disabled={pending}
+    >
       Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
     </Button>
   );

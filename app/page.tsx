@@ -16,10 +16,10 @@ export default function Page() {
             className={`${lusitana.className} text-xl text-gray-800 md:text-3xl md:leading-normal`}
           >
             <strong>Welcome to Marden.</strong>
-            {/* <a href="https://nextjs.org/learn/" className="text-blue-500">
-              Next.js Learn Course
+            <a href="https://nextjs.org/learn/" className="text-orange-500">
+              Admin Dashborad
             </a>
-            , brought to you by Vercel. */}
+            , brought to you by AET Group.
           </p>
           <Link
             href="/login"
@@ -32,14 +32,14 @@ export default function Page() {
           {/* Add Hero Images Here */}
           <Image
             // src="/hero-desktop.png"
-            src="/customers/Honey.png"
+            src="/customers/logo.PNG"
             width={500}
             height={330}
             alt="Screenshots of the dashboard project showing desktop version"
             className="hidden md:block"
           />
           <Image
-            src="/customers/Honey.png"
+            src="/customers/logo.PNG"
             width={560}
             height={620}
             alt="Screenshot of the dashboard project showing mobile version"

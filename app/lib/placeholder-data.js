@@ -13,6 +13,12 @@ const users = [
     email: 'abenikeb79@gmail.com',
     password: '1uj@21f6fwB',
   },
+  {
+    id: '410544b2-4001-4271-9855-fec4b6a6442b',
+    name: 'Marden.Admin',
+    email: 'marden2024@admin.com',
+    password: '123456',
+  },
 ];
 
 const customers = [

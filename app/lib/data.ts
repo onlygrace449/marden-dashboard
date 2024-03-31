@@ -101,12 +101,54 @@ export async function fetchCardData() {
     // const numberOfCustomers = Number(data[1].rows[0].count ?? '0');
     // const totalPaidInvoices = formatCurrency(data[2].rows[0].paid ?? '0');
     // const totalPendingInvoices = formatCurrency(data[2].rows[0].pending ?? '0');
+    const accessToken = '1|HVfZui9NWDKhCgXnAep2TmMQkIxzshgGOtGoryVc72617374';
+    // const [usersResponse, ordersResponse] = await Promise.all([
+    //   axios.get('http://196.189.124.134:38443/api/users'),
+    //   axios.get('http://196.189.124.134:38443/api/get-all-orders', {
+    //     headers: {
+    //       Authorization: `Bearer ${accessToken}`,
+    //     },
+    //   }),
+    // ]);
+
+    // const numberOfUsers = usersResponse.data.users.length;
+    // const numberOfOrders = ordersResponse.data.data.length;
+
+    // return {
+    //   numberOfCustomers: numberOfUsers,
+    //   numberOfInvoices: numberOfOrders,
+    //   totalPaidInvoices: 1,
+    //   totalPendingInvoices: 1,
+    // };
+
+    const [usersResponse, ordersResponse] = await Promise.all([
+      axios.get('http://196.189.124.134:38443/api/users'),
+      axios.get('http://196.189.124.134:38443/api/get-all-orders', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }),
+    ]);
+
+    const numberOfUsers = usersResponse.data.users.length;
+    const allOrders = ordersResponse.data.data;
+    const numberOfOrders = allOrders.length;
+
+    // Filter orders based on status
+    const pendingOrders = allOrders.filter(
+      (order: any) => order.status === 'pending',
+    );
+    const completedOrders = allOrders.filter(
+      (order: any) => order.status === 'completed',
+    );
+    const numberOfPendingOrders = pendingOrders.length;
+    const numberOfCompletedOrders = completedOrders.length;
 
     return {
-      numberOfCustomers: 1,
-      numberOfInvoices: 1,
-      totalPaidInvoices: 1,
-      totalPendingInvoices: 1,
+      numberOfCustomers: numberOfUsers,
+      numberOfInvoices: numberOfOrders,
+      totalPaidInvoices: numberOfCompletedOrders, // Assuming completed orders represent paid invoices
+      totalPendingInvoices: numberOfPendingOrders,
     };
   } catch (error) {
     console.error('Database Error:', error);

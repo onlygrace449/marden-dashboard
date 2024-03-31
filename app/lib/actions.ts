@@ -140,7 +140,7 @@ export async function authenticate(
           return 'Something went wrong.';
       }
     } else {
-      return 'Something went wrong.';
+      return redirect('/dashboard');
     }
   }
 }

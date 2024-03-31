@@ -1,4 +1,5 @@
 import type { NextAuthConfig } from 'next-auth';
+import { redirect } from 'next/navigation';
 
 export const authConfig = {
   pages: {
@@ -9,7 +10,7 @@ export const authConfig = {
     // while this file is also used in non-Node.js environments
   ],
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
+    authorized({ auth, request: { nextUrl } }: any) {
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
       if (isOnDashboard) {
@@ -22,3 +23,7 @@ export const authConfig = {
     },
   },
 } satisfies NextAuthConfig;
+
+export async function LoginAction() {
+  return redirect('/dashboard');
+}

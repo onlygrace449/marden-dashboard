@@ -9,15 +9,15 @@ import axios from 'axios';
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
-    const response = await axios.get('http://196.189.124.134:38443/api/users');
-    const user = response.data;
+    // const response = await axios.get('http://196.189.124.134:38443/api/users');
+    // const user = response.data;
     // console.log({ user });
     // return user;
     return {
       id: '410544b2-4001-4271-9855-fec4b6a6442b',
-      name: 'Abenezer.Kebede',
-      email: 'abenikeb79@gmail.com',
-      password: '1uj@21f6fwB',
+      name: 'Marden.Admin',
+      email: 'marden2024@admin.com',
+      password: '123456',
     };
     // return {
     //   id: 26,
@@ -80,9 +80,9 @@ export const { auth, signIn, signOut } = NextAuth({
 
           return {
             id: '410544b2-4001-4271-9855-fec4b6a6442b',
-            name: 'Abenezer Kebede',
-            email: 'abenikeb79@gmail.com',
-            password: '1uj@21f6fwB',
+            name: 'Marden.Admin',
+            email: 'marden2024@admin.com',
+            password: '123456',
           };
         }
         // return true;
